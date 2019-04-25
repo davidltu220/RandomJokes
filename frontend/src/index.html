@@ -3,7 +3,7 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/web-system-template/backend/index.js"></script>
+    <script src="/backend/index.js"></script>
     <style>
         body {
             background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8199d917682963.5773d9006ea33.jpg);
@@ -101,6 +101,32 @@
     <hr id="line">
     <div style="padding-top:40px">
     <button class="myButton" style="float:right" onclick="reloadPage();">Next Joke</button>
+
+    <button class="myButton" onclick="getLocation()">Get location</button>
+
+    <p id="locationfind"></p>
+    
+    <script>
+    var x = document.getElementById("locationfind");
+    document.getElementById("locationfind").style.color = "red";
+    document.getElementById("locationfind").style.fontFamily = "Lucida Console";
+    document.getElementById("locationfind").style.fontSize = "larger";
+    
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+    
+    function showPosition(position) {
+      x.innerHTML = "Latitude:" + position.coords.latitude + 
+      "<br>Longitude: " + position.coords.longitude;
+    }
+    
+    </script>
+    
     </div>
 </body>
 
